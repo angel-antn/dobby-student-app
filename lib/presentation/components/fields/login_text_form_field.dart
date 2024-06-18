@@ -16,25 +16,25 @@ class LoginTextFormField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const inputBorder = OutlineInputBorder(
-        borderRadius: BorderRadius.all(Radius.circular(30)),
+    final inputBorder = OutlineInputBorder(
+        borderRadius: const BorderRadius.all(Radius.circular(30)),
         borderSide: BorderSide(
-          color: Colors.white,
+          color: AppColors.primaryColor,
           width: 1.5,
         ));
 
     final errorBorder = OutlineInputBorder(
         borderRadius: const BorderRadius.all(Radius.circular(30)),
         borderSide: BorderSide(
-          color: Colors.red.shade400,
+          color: Colors.red.shade200,
           width: 1.5,
         ));
 
     const textStyle =
-        TextStyle(color: Colors.white, fontWeight: FontWeight.normal);
+        TextStyle(color: Colors.black54, fontWeight: FontWeight.normal);
 
     const hintTextStyle =
-        TextStyle(color: Colors.white60, fontWeight: FontWeight.normal);
+        TextStyle(color: Colors.black26, fontWeight: FontWeight.normal);
 
     return TextFormField(
       autocorrect: false,
@@ -45,7 +45,7 @@ class LoginTextFormField extends StatelessWidget {
       decoration: InputDecoration(
           prefixIcon: Icon(
             icon,
-            color: Colors.white,
+            color: AppColors.primaryColor,
           ),
           hintText: hintText,
           hintStyle: hintTextStyle,

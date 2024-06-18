@@ -25,21 +25,21 @@ class CustomTextField extends StatelessWidget {
     final inputBorder = OutlineInputBorder(
         borderRadius: const BorderRadius.all(Radius.circular(30)),
         borderSide: BorderSide(
-          color: AppColors.secondaryColor,
+          color: AppColors.primaryColor,
           width: 1.5,
         ));
 
     final errorBorder = OutlineInputBorder(
         borderRadius: const BorderRadius.all(Radius.circular(30)),
         borderSide: BorderSide(
-          color: Colors.red.shade400,
+          color: Colors.red.shade200,
           width: 1.5,
         ));
 
     const textStyle = TextStyle(fontWeight: FontWeight.normal);
 
-    final hintTextStyle = TextStyle(
-        color: AppColors.secondaryColor, fontWeight: FontWeight.normal);
+    final hintTextStyle =
+        TextStyle(color: AppColors.primaryColor, fontWeight: FontWeight.normal);
 
     return TextField(
       inputFormatters: textInputFormatter,
@@ -51,7 +51,7 @@ class CustomTextField extends StatelessWidget {
       decoration: InputDecoration(
           prefixIcon: Icon(
             icon,
-            color: AppColors.secondaryColor,
+            color: AppColors.primaryColor,
           ),
           hintText: hintText,
           hintStyle: hintTextStyle,

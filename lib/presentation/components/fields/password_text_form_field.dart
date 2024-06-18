@@ -23,25 +23,25 @@ class _PasswordTextFormFieldState extends State<PasswordTextFormField> {
 
   @override
   Widget build(BuildContext context) {
-    const inputBorder = OutlineInputBorder(
-        borderRadius: BorderRadius.all(Radius.circular(30)),
+    final inputBorder = OutlineInputBorder(
+        borderRadius: const BorderRadius.all(Radius.circular(30)),
         borderSide: BorderSide(
-          color: Colors.white,
+          color: AppColors.primaryColor,
           width: 1.5,
         ));
 
     final errorBorder = OutlineInputBorder(
         borderRadius: const BorderRadius.all(Radius.circular(30)),
         borderSide: BorderSide(
-          color: Colors.red.shade400,
+          color: Colors.red.shade200,
           width: 1.5,
         ));
 
     const textStyle =
-        TextStyle(color: Colors.white, fontWeight: FontWeight.normal);
+        TextStyle(color: Colors.black54, fontWeight: FontWeight.normal);
 
     const hintTextStyle =
-        TextStyle(color: Colors.white60, fontWeight: FontWeight.normal);
+        TextStyle(color: Colors.black26, fontWeight: FontWeight.normal);
 
     return TextFormField(
       obscureText: isObscure,
@@ -55,7 +55,7 @@ class _PasswordTextFormFieldState extends State<PasswordTextFormField> {
       decoration: InputDecoration(
           prefixIcon: Icon(
             widget.icon,
-            color: Colors.white,
+            color: AppColors.primaryColor,
           ),
           suffixIcon: IconButton(
               onPressed: () {
@@ -67,7 +67,7 @@ class _PasswordTextFormFieldState extends State<PasswordTextFormField> {
                 isObscure
                     ? Icons.visibility_outlined
                     : Icons.visibility_off_outlined,
-                color: Colors.white,
+                color: AppColors.primaryColor,
               )),
           hintText: widget.hintText,
           hintStyle: hintTextStyle,

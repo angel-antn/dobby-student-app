@@ -1,12 +1,12 @@
 import 'dart:convert';
 
 class UserResponse {
-  String? token;
   User? user;
+  String? token;
 
   UserResponse({
-    this.token,
     this.user,
+    this.token,
   });
 
   factory UserResponse.fromJson(String str) =>
@@ -15,13 +15,13 @@ class UserResponse {
   String toJson() => json.encode(toMap());
 
   factory UserResponse.fromMap(Map<String, dynamic> json) => UserResponse(
-        token: json["token"],
         user: json["user"] == null ? null : User.fromMap(json["user"]),
+        token: json["token"],
       );
 
   Map<String, dynamic> toMap() => {
-        "token": token,
         "user": user?.toMap(),
+        "token": token,
       };
 }
 
@@ -30,16 +30,14 @@ class User {
   String? name;
   String? lastname;
   String? email;
-  DateTime? createdAt;
-  DateTime? updatedAt;
+  bool? isActive;
 
   User({
     this.id,
     this.name,
     this.lastname,
     this.email,
-    this.createdAt,
-    this.updatedAt,
+    this.isActive,
   });
 
   factory User.fromJson(String str) => User.fromMap(json.decode(str));
@@ -51,12 +49,7 @@ class User {
         name: json["name"],
         lastname: json["lastname"],
         email: json["email"],
-        createdAt: json["created_at"] == null
-            ? null
-            : DateTime.parse(json["created_at"]),
-        updatedAt: json["updated_at"] == null
-            ? null
-            : DateTime.parse(json["updated_at"]),
+        isActive: json["isActive"],
       );
 
   Map<String, dynamic> toMap() => {
@@ -64,7 +57,6 @@ class User {
         "name": name,
         "lastname": lastname,
         "email": email,
-        "created_at": createdAt?.toIso8601String(),
-        "updated_at": updatedAt?.toIso8601String(),
+        "isActive": isActive,
       };
 }

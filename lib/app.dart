@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
+import 'package:student_app/data/local/preferences.dart';
 import 'package:student_app/presentation/theme/app_theme.dart';
+import 'package:student_app/providers/user_provider.dart';
 import 'package:student_app/router/router_config.dart';
 
 class AppProviderTree extends StatelessWidget {
@@ -10,14 +12,18 @@ class AppProviderTree extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      providers: const [],
-      child: const OfmaApp(),
+      providers: [
+        ChangeNotifierProvider(
+          create: (context) => UserProvider(),
+        ),
+      ],
+      child: const DobbyApp(),
     );
   }
 }
 
-class OfmaApp extends StatelessWidget {
-  const OfmaApp({
+class DobbyApp extends StatelessWidget {
+  const DobbyApp({
     super.key,
   });
 
@@ -29,7 +35,7 @@ class OfmaApp extends StatelessWidget {
     ]);
 
     return MaterialApp.router(
-      title: 'Ofma app',
+      title: 'Dobby app',
       theme: AppTheme.themeData,
       debugShowCheckedModeBanner: false,
       routeInformationParser: AppRouter().router.routeInformationParser,
