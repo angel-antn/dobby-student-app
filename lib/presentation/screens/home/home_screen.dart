@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:student_app/presentation/components/buttons/primary_button.dart';
 import 'package:student_app/presentation/components/buttons/touchable_opacity.dart';
 import 'package:student_app/presentation/theme/app_colors.dart';
+import 'package:student_app/router/router_const.dart';
 import 'package:student_app/utils/toast/show_toast.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -18,8 +20,21 @@ class HomeScreen extends StatelessWidget {
             color: AppColors.purple.withOpacity(0.65),
             image: Image.asset('assets/images/libro-de-musica.png'),
             body: 'Comienza aprendiendo que son las figuras musicales',
-            onTap: () {},
+            onTap: () {
+              context.pushNamed(AppRouterConstants.musicFiguresScreen);
+            },
             number: 1,
+          ),
+          _LevelCard(
+            title: 'Silencios',
+            color: AppColors.green.withOpacity(0.8),
+            image: Image.asset('assets/images/silencio.png'),
+            body:
+                'Veremos que existen otras figuras que representan la ausencia del sonido',
+            onTap: () {
+              context.pushNamed(AppRouterConstants.musicFiguresScreen);
+            },
+            number: 2,
           ),
           _LevelCard(
             title: 'Compás musical',
@@ -29,7 +44,7 @@ class HomeScreen extends StatelessWidget {
             onTap: () {
               showToast('Proximamente...');
             },
-            number: 2,
+            number: 3,
           ),
           _LevelCard(
             title: 'Notas musicales',
@@ -39,7 +54,10 @@ class HomeScreen extends StatelessWidget {
             onTap: () {
               showToast('Proximamente...');
             },
-            number: 3,
+            number: 4,
+          ),
+          const SizedBox(
+            height: 50,
           ),
         ],
       ),

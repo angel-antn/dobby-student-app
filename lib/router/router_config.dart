@@ -5,6 +5,8 @@ import 'package:student_app/presentation/components/transitions/swipe_to_left_tr
 import 'package:student_app/presentation/components/transitions/swipe_to_right_transition.dart';
 import 'package:student_app/presentation/screens/auth/auth_screen.dart';
 import 'package:student_app/presentation/screens/main/main_screen.dart';
+import 'package:student_app/presentation/screens/music-figures/music_figures_screen.dart';
+import 'package:student_app/presentation/screens/silences/silences_screen.dart';
 import 'package:student_app/router/router_const.dart';
 
 class AppRouter {
@@ -32,6 +34,20 @@ class AppRouter {
         name: AppRouterConstants.mainScreen,
         pageBuilder: (context, state) {
           return SwipeToRightTransition(child: const MainScreen());
+        },
+      ),
+      GoRoute(
+        path: '/music-figures',
+        name: AppRouterConstants.musicFiguresScreen,
+        pageBuilder: (context, state) {
+          return SwipeToRightTransition(child: const MusicFiguresScreen());
+        },
+      ),
+      GoRoute(
+        path: '/silences',
+        name: AppRouterConstants.silencesScreen,
+        pageBuilder: (context, state) {
+          return SwipeToRightTransition(child: const SilencesScreen());
         },
       ),
     ],

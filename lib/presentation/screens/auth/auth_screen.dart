@@ -268,7 +268,7 @@ class _RegisterFormState extends State<_RegisterForm> {
     if (value.length >= 6) {
       return null;
     }
-    return 'min. 6 carcateres';
+    return 'min. 6 caracteres';
   }
 
   validateRepeatedPassword(String value, String password) {
@@ -278,7 +278,7 @@ class _RegisterFormState extends State<_RegisterForm> {
       }
       return 'Las contraseñas no coinciden';
     }
-    return 'min. 6 carcateres';
+    return 'min. 6 caracteres';
   }
 
   @override

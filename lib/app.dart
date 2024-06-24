@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
-import 'package:student_app/data/local/preferences.dart';
 import 'package:student_app/presentation/theme/app_theme.dart';
 import 'package:student_app/providers/user_provider.dart';
 import 'package:student_app/router/router_config.dart';

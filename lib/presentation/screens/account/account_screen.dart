@@ -40,47 +40,52 @@ class AccountScreen extends StatelessWidget {
                   const SizedBox(
                     width: 7,
                   ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        '${toTitleCase(userProvider.user?.name ?? '')} ${toTitleCase(userProvider.user?.lastname ?? '')}',
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 28,
-                          fontWeight: FontWeight.w900,
-                        ),
-                      ),
-                      TouchableOpacity(
-                        onTap: () {},
-                        child: Container(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 20, vertical: 7),
-                          decoration: BoxDecoration(
-                              color: AppColors.yellow,
-                              borderRadius: BorderRadius.circular(15)),
-                          child: const Row(
-                            children: [
-                              Icon(
-                                Icons.qr_code,
-                                color: Colors.white,
-                              ),
-                              SizedBox(
-                                width: 5,
-                              ),
-                              Text(
-                                'Mostrar QR',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
-                            ],
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          '${toTitleCase(userProvider.user?.name ?? '')} ${toTitleCase(userProvider.user?.lastname ?? '')}',
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 28,
+                            fontWeight: FontWeight.w900,
                           ),
                         ),
-                      )
-                    ],
+                        TouchableOpacity(
+                          onTap: () {},
+                          child: Container(
+                            alignment: Alignment.center,
+                            width: 150,
+                            padding: const EdgeInsets.symmetric(vertical: 7),
+                            decoration: BoxDecoration(
+                                color: AppColors.yellow,
+                                borderRadius: BorderRadius.circular(15)),
+                            child: const Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Icon(
+                                  Icons.qr_code,
+                                  color: Colors.white,
+                                ),
+                                SizedBox(
+                                  width: 5,
+                                ),
+                                Text(
+                                  'Mostrar QR',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
                   ),
                 ],
               ),
