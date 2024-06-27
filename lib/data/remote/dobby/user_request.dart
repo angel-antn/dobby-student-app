@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 import 'package:student_app/data/local/preferences.dart';
+import 'package:student_app/models/student_response.dart';
 import 'package:student_app/models/user_response.dart';
 
 class UserRequest {
@@ -90,5 +91,49 @@ class UserRequest {
     } else {
       return null;
     }
+  }
+
+  Future<StudentResponse?> getStudents(int page) async {
+    final url = Uri.http(_baseUrl, '$_path/${Preferences.user!.id!}/students',
+        {'page': '$page', 'pageSize': '10'});
+
+    final response = await http
+        .get(url, headers: {'Authorization': Preferences.token ?? ''});
+
+    if (response.statusCode == 200) {
+      return StudentResponse.fromJson(response.body);
+    } else {
+      return null;
+    }
+  }
+
+  Future<bool> addStudent(String id) async {
+    final url = Uri.http(_baseUrl, '$_path/${Preferences.user!.id!}/students');
+
+    final response = await http.post(url,
+        headers: {
+          'Authorization': Preferences.token ?? '',
+          'Content-Type': 'application/json'
+        },
+        body: json.encode({"studentId": id}));
+
+    if (response.statusCode == 201 || response.statusCode == 200) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  Future<void> deleteStudent(String id) async {
+    final url =
+        Uri.http(_baseUrl, '$_path/${Preferences.user!.id!}/students/$id');
+
+    await http.delete(
+      url,
+      headers: {
+        'Authorization': Preferences.token ?? '',
+        'Content-Type': 'application/json'
+      },
+    );
   }
 }

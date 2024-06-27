@@ -48,7 +48,7 @@ class _MainScreenState extends State<MainScreen> {
               width: 15,
             ),
             Text(
-                '¡Hola ${toTitleCase(userProvider.user?.name ?? '')}! Vayamos a estudiar'),
+                '¡Hola ${toTitleCase(userProvider.user?.name ?? '')}! Vamos a estudiar'),
           ],
         ),
       ),

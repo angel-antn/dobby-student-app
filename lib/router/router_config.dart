@@ -7,6 +7,8 @@ import 'package:student_app/presentation/screens/auth/auth_screen.dart';
 import 'package:student_app/presentation/screens/main/main_screen.dart';
 import 'package:student_app/presentation/screens/music-figures/music_figures_screen.dart';
 import 'package:student_app/presentation/screens/silences/silences_screen.dart';
+import 'package:student_app/presentation/screens/student/student_screen.dart';
+import 'package:student_app/presentation/screens/teacher/teacher_screen.dart';
 import 'package:student_app/router/router_const.dart';
 
 class AppRouter {
@@ -48,6 +50,23 @@ class AppRouter {
         name: AppRouterConstants.silencesScreen,
         pageBuilder: (context, state) {
           return SwipeToRightTransition(child: const SilencesScreen());
+        },
+      ),
+      GoRoute(
+        path: '/teacher',
+        name: AppRouterConstants.teacherScreen,
+        pageBuilder: (context, state) {
+          return SwipeToRightTransition(child: const TeacherScreen());
+        },
+      ),
+      GoRoute(
+        path: '/student/:id',
+        name: AppRouterConstants.studentScreen,
+        pageBuilder: (context, state) {
+          return SwipeToRightTransition(
+              child: StudentScreen(
+            id: state.pathParameters['id']!,
+          ));
         },
       ),
     ],

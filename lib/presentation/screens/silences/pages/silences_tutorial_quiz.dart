@@ -3,92 +3,31 @@ import 'package:go_router/go_router.dart';
 import 'package:student_app/data/local/preferences.dart';
 import 'package:student_app/data/remote/dobby/result_request.dart';
 import 'package:student_app/presentation/components/buttons/primary_button.dart';
-import 'package:student_app/presentation/components/question-model/horizontal_non_image_question.dart';
 import 'package:student_app/presentation/components/question-model/vertical_image_question.dart';
 import 'package:student_app/presentation/theme/app_colors.dart';
 import 'package:student_app/utils/toast/show_toast.dart';
 
-class MusicFiguresTutorialQuiz extends StatefulWidget {
-  const MusicFiguresTutorialQuiz({super.key, required this.increaseIndex});
+class SilencesTutorialQuiz extends StatefulWidget {
+  const SilencesTutorialQuiz({super.key, required this.increaseIndex});
 
   final Function increaseIndex;
 
   @override
-  State<MusicFiguresTutorialQuiz> createState() =>
-      _MusicFiguresTutorialQuizState();
+  State<SilencesTutorialQuiz> createState() => _SilencesTutorialQuizState();
 }
 
-class _MusicFiguresTutorialQuizState extends State<MusicFiguresTutorialQuiz> {
+class _SilencesTutorialQuizState extends State<SilencesTutorialQuiz> {
   int? response1;
   int? response2;
   int? response3;
   int? response4;
   int? response5;
   int? response6;
-  int? response7;
-  int? response8;
 
   bool review = false;
 
   @override
   Widget build(BuildContext context) {
-    onClick() {
-      String details = '';
-      int count = 0;
-
-      if (response1 != 1) {
-        details += 'Debe repasar los elementos de la figura musical\n';
-        count++;
-      }
-      if (response2 != 1) {
-        details += 'Debe repasar la redonda\n';
-        count++;
-      }
-      if (response3 != 1) {
-        details += 'Debe repasar cual es el nucleo\n';
-        count++;
-      }
-      if (response4 != 2) {
-        details += 'Debe repasar la negra\n';
-        count++;
-      }
-      if (response5 != 0) {
-        details += 'Debe repasar cual es la plica\n';
-        count++;
-      }
-      if (response6 != 0) {
-        details += 'Debe repasar la corchea\n';
-        count++;
-      }
-      if (response7 != 0) {
-        details += 'Debe repasar la blanca\n';
-        count++;
-      }
-      if (response8 != 2) {
-        details += 'Debe repasar cual es el corchete\n';
-        count++;
-      }
-
-      if (details.isEmpty) {
-        details = 'Esta lección tuvo resultados perfectos';
-      }
-
-      ResultRequest()
-          .createResult(
-        userId: Preferences.user?.id ?? '',
-        details: details,
-        level: '1 - Figuras musicales 🎸',
-        questionsCount: count,
-        questionsQty: 8,
-      )
-          .then(
-        (value) {
-          context.pop();
-          showToast('¡Lección compleatada con éxito!');
-        },
-      );
-    }
-
     setResponse1(int response) {
       if (review) return;
       setState(() {
@@ -131,18 +70,53 @@ class _MusicFiguresTutorialQuizState extends State<MusicFiguresTutorialQuiz> {
       });
     }
 
-    setResponse7(int response) {
-      if (review) return;
-      setState(() {
-        response7 = response;
-      });
-    }
+    onClick() {
+      String details = '';
+      int count = 0;
 
-    setResponse8(int response) {
-      if (review) return;
-      setState(() {
-        response8 = response;
-      });
+      if (response1 != 1) {
+        details += 'Debe repasar el silencio de redonda\n';
+        count++;
+      }
+      if (response2 != 2) {
+        details += 'Debe repasar el silencio de blanca\n';
+        count++;
+      }
+      if (response3 != 2) {
+        details += 'Debe repasar el silencio de semicorchea\n';
+        count++;
+      }
+      if (response4 != 0) {
+        details += 'Debe repasar el silencio de blanca\n';
+        count++;
+      }
+      if (response5 != 1) {
+        details += 'Debe repasar el silencio de corchea\n';
+        count++;
+      }
+      if (response6 != 2) {
+        details += 'Debe repasar el silencio de semifusa\n';
+        count++;
+      }
+
+      if (details.isEmpty) {
+        details = 'Esta lección tuvo resultados perfectos';
+      }
+
+      ResultRequest()
+          .createResult(
+        userId: Preferences.user?.id ?? '',
+        details: details,
+        level: '2 - Silencios 🎸',
+        questionsCount: count,
+        questionsQty: 6,
+      )
+          .then(
+        (value) {
+          context.pop();
+          showToast('¡Lección compleatada con éxito!');
+        },
+      );
     }
 
     return Column(
@@ -171,7 +145,7 @@ class _MusicFiguresTutorialQuizState extends State<MusicFiguresTutorialQuiz> {
                   Text(
                     'Preguntas',
                     style: TextStyle(
-                        color: AppColors.purple.withOpacity(0.65),
+                        color: AppColors.green,
                         fontSize: 32,
                         fontWeight: FontWeight.w700),
                   ),
@@ -180,75 +154,69 @@ class _MusicFiguresTutorialQuizState extends State<MusicFiguresTutorialQuiz> {
               const SizedBox(
                 height: 20,
               ),
-              HorizontalNonImageQuestion(
-                correctResponse: 1,
-                review: review,
+              VerticalImageQuestion(
+                borderColor: AppColors.green,
+                color: AppColors.green.withOpacity(0.25),
+                question: '¿Cuál es el nombre de esta figura?.',
+                imagePath: 'assets/images/silence_1.png',
+                labels: const ['Blanca', 'Redonda', 'Corchea'],
                 setResponse: setResponse1,
                 response: response1,
-                question:
-                    '¿Por cuantos elementos se conforman las figuras musicales?.',
-                labels: const ['4', '3', '2', '5'],
+                correctResponse: 1,
+                review: review,
               ),
               VerticalImageQuestion(
-                question: '¿Cuál es el nombre de esta figura?.',
-                imagePath: 'assets/images/figure_1.png',
-                labels: const ['Blanca', 'Redonda', 'Corchea'],
+                borderColor: AppColors.green,
+                color: AppColors.green.withOpacity(0.25),
+                question: '¿Cuántos tiempos dura esta figura?',
+                imagePath: 'assets/images/silence_3.png',
+                labels: const ['2 tiempos', '1/2 tiempo', '1 tiempo'],
                 setResponse: setResponse2,
                 response: response2,
-                correctResponse: 1,
-                review: review,
-              ),
-              VerticalImageQuestion(
-                question: '¿Como se llama esta parte de la figura?',
-                imagePath: 'assets/images/nucleo.png',
-                labels: const ['Plica', 'Núcleo', 'Corchete'],
-                setResponse: setResponse3,
-                response: response3,
-                correctResponse: 1,
-                review: review,
-              ),
-              VerticalImageQuestion(
-                question: '¿Cuántos tiempos dura esta figura?',
-                imagePath: 'assets/images/figure_3.png',
-                labels: const ['2 tiempos', '1/2 tiempo', '1 tiempo'],
-                setResponse: setResponse4,
-                response: response4,
                 correctResponse: 2,
                 review: review,
               ),
               VerticalImageQuestion(
-                question: '¿Como se llama esta parte de la figura?',
-                imagePath: 'assets/images/plica.png',
-                labels: const ['Plica', 'Núcleo', 'Corchete'],
+                borderColor: AppColors.green,
+                color: AppColors.green.withOpacity(0.25),
+                question: '¿Cuál es el nombre de esta figura?.',
+                imagePath: 'assets/images/silence_5.png',
+                labels: const ['Fusa', 'Corchea', 'Semicorchea'],
+                setResponse: setResponse3,
+                response: response3,
+                correctResponse: 2,
+                review: review,
+              ),
+              VerticalImageQuestion(
+                borderColor: AppColors.green,
+                color: AppColors.green.withOpacity(0.25),
+                question: '¿Cuántos tiempos dura esta figura?',
+                imagePath: 'assets/images/silence_2.png',
+                labels: const ['2 tiempos', '1/2 tiempo', '1 tiempo'],
+                setResponse: setResponse4,
+                response: response4,
+                correctResponse: 0,
+                review: review,
+              ),
+              VerticalImageQuestion(
+                borderColor: AppColors.green,
+                color: AppColors.green.withOpacity(0.25),
+                question: '¿Cuál es el nombre de esta figura?.',
+                imagePath: 'assets/images/silence_4.png',
+                labels: const ['Negra', 'Corchea', 'Semicorchea'],
                 setResponse: setResponse5,
                 response: response5,
-                correctResponse: 0,
+                correctResponse: 1,
                 review: review,
               ),
               VerticalImageQuestion(
+                borderColor: AppColors.green,
+                color: AppColors.green.withOpacity(0.25),
                 question: '¿Cuántos tiempos dura esta figura?',
-                imagePath: 'assets/images/figure_4.png',
-                labels: const ['1/2 tiempo', '4 tiempos', '1/4 tiempo'],
+                imagePath: 'assets/images/silence_7.png',
+                labels: const ['4 tiempos', '1/2 tiempo', '1/16 tiempo'],
                 setResponse: setResponse6,
                 response: response6,
-                correctResponse: 0,
-                review: review,
-              ),
-              VerticalImageQuestion(
-                question: '¿Cuál es el nombre de esta figura?.',
-                imagePath: 'assets/images/figure_2.png',
-                labels: const ['Blanca', 'Fusa', 'Corchea'],
-                setResponse: setResponse7,
-                response: response7,
-                correctResponse: 0,
-                review: review,
-              ),
-              VerticalImageQuestion(
-                question: '¿Como se llama esta parte de la figura?',
-                imagePath: 'assets/images/corchete.png',
-                labels: const ['Plica', 'Núcleo', 'Corchete'],
-                setResponse: setResponse8,
-                response: response8,
                 correctResponse: 2,
                 review: review,
               ),
@@ -266,9 +234,7 @@ class _MusicFiguresTutorialQuizState extends State<MusicFiguresTutorialQuiz> {
                   response3 == null ||
                   response4 == null ||
                   response5 == null ||
-                  response6 == null ||
-                  response7 == null ||
-                  response8 == null) {
+                  response6 == null) {
                 showToast('Aún quedan preguntas por responder');
                 return;
               }

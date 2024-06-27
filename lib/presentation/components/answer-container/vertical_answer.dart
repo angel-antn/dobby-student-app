@@ -7,12 +7,14 @@ class VerticalAnswer extends StatelessWidget {
       required this.label,
       required this.onTap,
       this.response,
-      required this.index});
+      required this.index,
+      this.borderColor});
 
   final String label;
   final Function onTap;
   final int? response;
   final int index;
+  final Color? borderColor;
 
   @override
   Widget build(BuildContext context) {
@@ -23,9 +25,11 @@ class VerticalAnswer extends StatelessWidget {
         margin: const EdgeInsets.only(bottom: 10),
         width: double.infinity,
         decoration: BoxDecoration(
-            color: response == index ? AppColors.primaryColor : null,
+            color: response == index
+                ? borderColor ?? AppColors.primaryColor
+                : null,
             borderRadius: BorderRadius.circular(25),
-            border: Border.all(color: AppColors.primaryColor)),
+            border: Border.all(color: borderColor ?? AppColors.primaryColor)),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(25),
           child: Text(label),

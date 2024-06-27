@@ -32,7 +32,7 @@ class HomeScreen extends StatelessWidget {
             body:
                 'Veremos que existen otras figuras que representan la ausencia del sonido',
             onTap: () {
-              context.pushNamed(AppRouterConstants.musicFiguresScreen);
+              context.pushNamed(AppRouterConstants.silencesScreen);
             },
             number: 2,
           ),

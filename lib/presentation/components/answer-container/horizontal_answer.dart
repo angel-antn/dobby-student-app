@@ -7,12 +7,14 @@ class HorizontalAnswer extends StatelessWidget {
       required this.onTap,
       this.response,
       required this.index,
-      required this.label});
+      required this.label,
+      this.borderColor});
 
   final Function onTap;
   final int? response;
   final int index;
   final String label;
+  final Color? borderColor;
 
   @override
   Widget build(BuildContext context) {
@@ -25,9 +27,11 @@ class HorizontalAnswer extends StatelessWidget {
           margin: const EdgeInsets.only(bottom: 20),
           width: double.infinity,
           decoration: BoxDecoration(
-              color: response == index ? AppColors.primaryColor : null,
+              color: response == index
+                  ? borderColor ?? AppColors.primaryColor
+                  : null,
               borderRadius: BorderRadius.circular(25),
-              border: Border.all(color: AppColors.primaryColor)),
+              border: Border.all(color: borderColor ?? AppColors.primaryColor)),
           child: ClipRRect(
             borderRadius: BorderRadius.circular(25),
             child: Text(label),

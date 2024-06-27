@@ -14,7 +14,9 @@ class VerticalImageQuestion extends StatelessWidget {
       required this.setResponse,
       this.response,
       required this.review,
-      required this.correctResponse});
+      required this.correctResponse,
+      this.color,
+      this.borderColor});
 
   final String question;
   final String imagePath;
@@ -23,6 +25,8 @@ class VerticalImageQuestion extends StatelessWidget {
   final int? response;
   final bool review;
   final int correctResponse;
+  final Color? color;
+  final Color? borderColor;
 
   @override
   Widget build(BuildContext context) {
@@ -35,11 +39,15 @@ class VerticalImageQuestion extends StatelessWidget {
           index: i,
           label: labels[i],
           response: response,
+          borderColor: borderColor,
         ));
       }
       return Column(
         children: [
-          QuestionContainer(question: question),
+          QuestionContainer(
+            question: question,
+            color: color,
+          ),
           const SizedBox(
             height: 20,
           ),
@@ -48,7 +56,8 @@ class VerticalImageQuestion extends StatelessWidget {
               Container(
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(25),
-                    border: Border.all(color: AppColors.primaryColor)),
+                    border: Border.all(
+                        color: borderColor ?? AppColors.primaryColor)),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(25),
                   child: SizedBox(

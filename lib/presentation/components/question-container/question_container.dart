@@ -5,9 +5,11 @@ class QuestionContainer extends StatelessWidget {
   const QuestionContainer({
     super.key,
     required this.question,
+    this.color,
   });
 
   final String question;
+  final Color? color;
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +18,7 @@ class QuestionContainer extends StatelessWidget {
       alignment: Alignment.centerLeft,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15),
-        color: AppColors.primaryColor.withOpacity(0.25),
+        color: color ?? AppColors.primaryColor.withOpacity(0.25),
       ),
       padding: const EdgeInsets.all(24),
       child: Column(

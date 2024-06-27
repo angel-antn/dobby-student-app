@@ -12,7 +12,9 @@ class HorizontalNonImageQuestion extends StatelessWidget {
       required this.question,
       required this.labels,
       required this.review,
-      required this.correctResponse});
+      required this.correctResponse,
+      this.color,
+      this.borderColor});
 
   final Function setResponse;
   final int? response;
@@ -20,6 +22,8 @@ class HorizontalNonImageQuestion extends StatelessWidget {
   final List<String> labels;
   final bool review;
   final int correctResponse;
+  final Color? color;
+  final Color? borderColor;
 
   @override
   Widget build(BuildContext context) {
@@ -45,6 +49,7 @@ class HorizontalNonImageQuestion extends StatelessWidget {
       return Column(
         children: [
           QuestionContainer(
+            color: color,
             question: question,
           ),
           const SizedBox(

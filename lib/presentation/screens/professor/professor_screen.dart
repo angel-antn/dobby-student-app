@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:student_app/presentation/components/buttons/touchable_opacity.dart';
 import 'package:student_app/presentation/theme/app_colors.dart';
+import 'package:student_app/router/router_const.dart';
 
 class ProfessorScreen extends StatelessWidget {
   const ProfessorScreen({super.key});
@@ -34,7 +36,9 @@ class ProfessorScreen extends StatelessWidget {
               height: 32,
             ),
             TouchableOpacity(
-              onTap: () {},
+              onTap: () {
+                context.pushNamed(AppRouterConstants.teacherScreen);
+              },
               child: Container(
                 alignment: Alignment.center,
                 width: double.infinity,

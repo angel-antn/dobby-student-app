@@ -2,6 +2,7 @@ import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
+import 'package:qr_flutter/qr_flutter.dart';
 import 'package:student_app/data/local/preferences.dart';
 import 'package:student_app/data/remote/dobby/user_request.dart';
 import 'package:student_app/presentation/components/buttons/touchable_opacity.dart';
@@ -54,7 +55,43 @@ class AccountScreen extends StatelessWidget {
                           ),
                         ),
                         TouchableOpacity(
-                          onTap: () {},
+                          onTap: () {
+                            showDialog(
+                                context: context,
+                                builder: (context) => AlertDialog(
+                                      shape: const RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.all(
+                                          Radius.circular(15),
+                                        ),
+                                      ),
+                                      content: SizedBox(
+                                        width:
+                                            MediaQuery.of(context).size.width,
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.min,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                          children: [
+                                            QrImageView(
+                                              data: Preferences.user!.id!,
+                                            ),
+                                            SizedBox(
+                                              height: 20,
+                                            ),
+                                            Center(
+                                              child: SelectableText(
+                                                'Código: ${Preferences.user!.id!}',
+                                                style: TextStyle(
+                                                    color: Colors.black54),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ));
+                          },
                           child: Container(
                             alignment: Alignment.center,
                             width: 150,

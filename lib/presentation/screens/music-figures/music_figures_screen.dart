@@ -12,10 +12,22 @@ class MusicFiguresScreen extends StatefulWidget {
 
 class _MusicFiguresScreenState extends State<MusicFiguresScreen> {
   int index = 0;
+  late ScrollController scrollController;
+
+  @override
+  void initState() {
+    scrollController = ScrollController();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     increaseIndex() {
+      scrollController.position.animateTo(
+        0,
+        curve: Easing.emphasizedAccelerate,
+        duration: Durations.medium3,
+      );
       setState(() {
         index = index + 1;
       });
@@ -26,6 +38,7 @@ class _MusicFiguresScreenState extends State<MusicFiguresScreen> {
         padding: const EdgeInsets.all(24.0),
         child: Center(
           child: SingleChildScrollView(
+            controller: scrollController,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
