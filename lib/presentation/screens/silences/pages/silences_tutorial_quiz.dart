@@ -72,31 +72,31 @@ class _SilencesTutorialQuizState extends State<SilencesTutorialQuiz> {
 
     onClick() {
       String details = '';
-      int count = 0;
+      int count = 6;
 
       if (response1 != 1) {
         details += 'Debe repasar el silencio de redonda\n';
-        count++;
+        count--;
       }
       if (response2 != 2) {
         details += 'Debe repasar el silencio de blanca\n';
-        count++;
+        count--;
       }
       if (response3 != 2) {
         details += 'Debe repasar el silencio de semicorchea\n';
-        count++;
+        count--;
       }
       if (response4 != 0) {
         details += 'Debe repasar el silencio de blanca\n';
-        count++;
+        count--;
       }
       if (response5 != 1) {
         details += 'Debe repasar el silencio de corchea\n';
-        count++;
+        count--;
       }
       if (response6 != 2) {
         details += 'Debe repasar el silencio de semifusa\n';
-        count++;
+        count--;
       }
 
       if (details.isEmpty) {

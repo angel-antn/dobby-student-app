@@ -34,39 +34,39 @@ class _MusicFiguresTutorialQuizState extends State<MusicFiguresTutorialQuiz> {
   Widget build(BuildContext context) {
     onClick() {
       String details = '';
-      int count = 0;
+      int count = 8;
 
       if (response1 != 1) {
         details += 'Debe repasar los elementos de la figura musical\n';
-        count++;
+        count--;
       }
       if (response2 != 1) {
         details += 'Debe repasar la redonda\n';
-        count++;
+        count--;
       }
       if (response3 != 1) {
         details += 'Debe repasar cual es el nucleo\n';
-        count++;
+        count--;
       }
       if (response4 != 2) {
         details += 'Debe repasar la negra\n';
-        count++;
+        count--;
       }
       if (response5 != 0) {
         details += 'Debe repasar cual es la plica\n';
-        count++;
+        count--;
       }
       if (response6 != 0) {
         details += 'Debe repasar la corchea\n';
-        count++;
+        count--;
       }
       if (response7 != 0) {
         details += 'Debe repasar la blanca\n';
-        count++;
+        count--;
       }
       if (response8 != 2) {
         details += 'Debe repasar cual es el corchete\n';
-        count++;
+        count--;
       }
 
       if (details.isEmpty) {
